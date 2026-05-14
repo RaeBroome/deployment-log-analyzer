@@ -1,0 +1,37 @@
+{
+  "deployment_status": "FAILED",
+  "summary": "Code deployment succeeded for all 7 components but database script deployment failed due to missing table 'dbo.ApplicationStatus_New', leaving application code and database schema out of sync.",
+  "failures": [
+    {
+      "timestamp": "2026-03-31 19:05:16",
+      "component": "Database Script Deployment - Script_3_MigrateStatusData.sql",
+      "error": "SqlException: Invalid object name 'dbo.ApplicationStatus_New'. INSERT INTO dbo.ApplicationStatus_New SELECT * FROM dbo.ApplicationStatus WHERE StateCode = 'ST1'",
+      "root_cause": "Script_3_MigrateStatusData.sql attempts to insert data into table 'dbo.ApplicationStatus_New' which does not exist. Either Script_2_UpdateStatusCodes.sql failed to create this table or the table creation statement is missing from the previous scripts.",
+      "recommended_action": "1. Verify Script_2_UpdateStatusCodes.sql contains CREATE TABLE statement for 'dbo.ApplicationStatus_New'. 2. Review transaction rollback logs to confirm database state. 3. Manually execute missing DDL to create the table or fix Script_2. 4. Re-run database scripts starting from release 03312026. 5. Only bring websites online after database schema is successfully updated."
+    }
+  ],
+  "warnings": [
+    {
+      "timestamp": "2026-03-31 19:05:17",
+      "component": "Deployment Orchestrator",
+      "message": "Code deployment succeeded but database scripts failed - Application code and database schema are now out of sync",
+      "recommendation": "Do not bring websites online until database schema is successfully deployed. The new application code may reference database objects or columns that do not yet exist, which will cause runtime errors."
+    }
+  ],
+  "successes": [
+    "Connected to Azure US Government cloud successfully",
+    "Disabled uptime and task alerts for staging environment",
+    "Stopped AmsTasksService and Default Web Site",
+    "Took 6 websites offline (State, Public, Agency, Api, Applicant, Host)",
+    "Completed parallel backup of 3 databases (AMS_ST1_STAGING, AMS_ST1_Registry_STAGING, AMS_ST1_Logging_STAGING)",
+    "Backed up code for 5 websites in 0.5 minutes",
+    "SSRS upload started in background",
+    "Successfully deployed all 7 components using 3 parallel threads (State, Public, Agency, Api, Applicant, Host, TaskService)",
+    "Restored 2 preserved files (web.config.transform, App_Data/GeoData.xml)",
+    "Cleaned up 2 non-production config files",
+    "Executed 3 database scripts successfully before failure (Script_1_AddRegistryColumns.sql, Script_1_CreateAuditTable.sql, Script_2_UpdateStatusCodes.sql)",
+    "Successfully rolled back database transaction after failure"
+  ],
+  "safe_to_retry": false,
+  "retry_instructions": "Before retrying: 1. Keep all websites offline (app_offline.htm in place). 2. Investigate and fix Script_2_UpdateStatusCodes.sql or Script_3_MigrateStatusData.sql to ensure 'dbo.ApplicationStatus_New' table is created before data migration. 3. Test corrected database scripts in isolated environment. 4. Since code is already deployed, only re-run database script deployment from release 03312026. 5. Verify database schema matches application code requirements. 6. Remove app_offline.htm files and restart services only after database deployment succeeds."
+}

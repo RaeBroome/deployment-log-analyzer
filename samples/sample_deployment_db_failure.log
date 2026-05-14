@@ -1,0 +1,152 @@
+[2026-03-31 19:02:11] Starting deployment to 03312026 for State1 (ST1)...
+[2026-03-31 19:02:11] Is this correct? Press <Ctrl+C> if not
+[2026-03-31 19:02:14] === INITIALIZING AZURE ENVIRONMENT ===
+[2026-03-31 19:02:14] [INFO] Connecting to Azure US Government...
+[2026-03-31 19:02:19] [SUCCESS] Connected to Azure US Government
+[2026-03-31 19:02:19] [SUCCESS] Az.RecoveryServices module is already installed
+[2026-03-31 19:02:20] [SUCCESS] Az.RecoveryServices module loaded
+[2026-03-31 19:02:20] === AZURE ENVIRONMENT READY ===
+
+[2026-03-31 19:02:21] Disabling AMS-ST1-STAGING-UptimeAlert...
+[2026-03-31 19:02:23] [INFO] Uptime alert disabled
+[2026-03-31 19:02:24] Disabling AMS-ST1-STAGING-TasksAlert...
+[2026-03-31 19:02:26] [INFO] Uptime alert disabled
+
+[2026-03-31 19:02:27] Stopping AmsTasksService...
+[2026-03-31 19:02:27] [INFO] Attempting to stop service: AmsTasksService
+[2026-03-31 19:02:31] [SUCCESS] AmsTasksService stopped
+
+[2026-03-31 19:02:32] Stopping Default Web Site...
+[2026-03-31 19:02:33] [SUCCESS] Default Web Site stopped
+
+[2026-03-31 19:02:34] === TAKING WEBSITES OFFLINE ===
+[2026-03-31 19:02:34] [INFO] Using app_offline.htm from: C:\Deployments\app_offline.htm
+[2026-03-31 19:02:34] [INFO] Taking 6 websites offline...
+[2026-03-31 19:02:34] [SUCCESS] Taken offline: AMS-ST1-State (State)
+[2026-03-31 19:02:34] [SUCCESS] Taken offline: AMS-ST1-Public (Public)
+[2026-03-31 19:02:35] [SUCCESS] Taken offline: AMS-ST1-Agency (Agency)
+[2026-03-31 19:02:35] [SUCCESS] Taken offline: AMS-ST1-Api (Api)
+[2026-03-31 19:02:35] [SUCCESS] Taken offline: AMS-ST1-Applicant (Applicant)
+[2026-03-31 19:02:35] [SUCCESS] Taken offline: AMS-ST1-Host (Host)
+[2026-03-31 19:02:35] [SUMMARY] 6 websites taken offline, 0 failures
+[2026-03-31 19:02:35] === OFFLINE OPERATION COMPLETE ===
+
+[2026-03-31 19:02:36] About to backup databases and code in parallel...
+[2026-03-31 19:02:36] Starting AMS Database Backups
+[2026-03-31 19:02:36] Setting Azure context...
+[2026-03-31 19:02:38] Connecting to vault: AMS-ST1-STAGING-Vault
+[2026-03-31 19:02:40] Getting backup items...
+[2026-03-31 19:02:42] Filtering for AMS databases...
+[2026-03-31 19:02:42] Found 3 AMS databases
+[2026-03-31 19:02:42] Starting backup for: AMS_ST1_STAGING
+[2026-03-31 19:02:44] Backup started for AMS_ST1_STAGING (Job ID: b2c3d4e5-2222-3333-4444-bbccddee0001)
+[2026-03-31 19:02:44] Starting backup for: AMS_ST1_Registry_STAGING
+[2026-03-31 19:02:45] Backup started for AMS_ST1_Registry_STAGING (Job ID: b2c3d4e5-2222-3333-4444-bbccddee0002)
+[2026-03-31 19:02:45] Starting backup for: AMS_ST1_Logging_STAGING
+[2026-03-31 19:02:46] Backup started for AMS_ST1_Logging_STAGING (Job ID: b2c3d4e5-2222-3333-4444-bbccddee0003)
+[2026-03-31 19:02:46] All database backup jobs started. Returning 3 job IDs.
+[2026-03-31 19:02:46] [INFO] Starting code backup...
+[2026-03-31 19:02:48] [INFO] Backing up AMS-ST1-State to C:\Backups\ST1\AMS-ST1-State_Pre20260331
+[2026-03-31 19:02:54] [INFO] Backing up AMS-ST1-Public to C:\Backups\ST1\AMS-ST1-Public_Pre20260331
+[2026-03-31 19:03:00] [INFO] Backing up AMS-ST1-Agency to C:\Backups\ST1\AMS-ST1-Agency_Pre20260331
+[2026-03-31 19:03:05] [INFO] Backing up AMS-ST1-Api to C:\Backups\ST1\AMS-ST1-Api_Pre20260331
+[2026-03-31 19:03:10] [INFO] Backing up AMS-ST1-Host to C:\Backups\ST1\AMS-ST1-Host_Pre20260331
+[2026-03-31 19:03:17] [SUCCESS] Code backup completed in 0.5 minutes
+[2026-03-31 19:03:17] [INFO] Waiting for database backup job to complete...
+[2026-03-31 19:03:47] Backup status: 2 completed, 1 running, 0 failed (Total: 3)
+[2026-03-31 19:04:17] Backup status: 3 completed, 0 running, 0 failed (Total: 3)
+[2026-03-31 19:04:17] [SUCCESS] Database backup job completed successfully
+[2026-03-31 19:04:17] [SUCCESS] All database backup jobs completed successfully
+
+[2026-03-31 19:04:18] Starting SSRS upload in background...
+[2026-03-31 19:04:18] SSRS upload started. Deployment continuing...
+
+[2026-03-31 19:04:19] === STARTING PARALLEL DEPLOYMENT ===
+[2026-03-31 19:04:19] [INFO] Started 3 deployment threads for 7 items
+[2026-03-31 19:04:19] [19:04:19.112-T1 INFO] Starting deployment of AMS-ST1-State (State)
+[2026-03-31 19:04:19] [19:04:19.114-T2 INFO] Starting deployment of AMS-ST1-Public (Public)
+[2026-03-31 19:04:19] [19:04:19.115-T3 INFO] Starting deployment of AMS-ST1-Agency (Agency)
+[2026-03-31 19:04:20] [19:04:20.203-T1 INFO] Using package source: C:\Projects\ST1-Deployment\ST1_03312026\Appl
+[2026-03-31 19:04:20] [19:04:20.204-T2 INFO] Using package source: C:\Projects\ST1-Deployment\ST1_03312026\Public
+[2026-03-31 19:04:20] [19:04:20.205-T3 INFO] Using package source: C:\Projects\ST1-Deployment\ST1_03312026\Appl
+[2026-03-31 19:04:21] [19:04:21.301-T1 INFO] Copying package files to C:\WebApps\AMS-ST1-State
+[2026-03-31 19:04:21] [19:04:21.302-T2 INFO] Copying package files to C:\WebApps\AMS-ST1-Public
+[2026-03-31 19:04:21] [19:04:21.303-T3 INFO] Copying package files to C:\WebApps\AMS-ST1-Agency
+[2026-03-31 19:04:36] [19:04:36.441-T1 INFO] Package copy completed for AMS-ST1-State
+[2026-03-31 19:04:36] [19:04:36.442-T1 INFO] Applying 5 configuration rules
+[2026-03-31 19:04:37] [19:04:37.551-T2 INFO] Package copy completed for AMS-ST1-Public
+[2026-03-31 19:04:37] [19:04:37.552-T2 INFO] Applying 2 configuration rules
+[2026-03-31 19:04:38] [19:04:38.661-T3 INFO] Package copy completed for AMS-ST1-Agency
+[2026-03-31 19:04:38] [19:04:38.662-T3 INFO] Applying 5 configuration rules
+[2026-03-31 19:04:39] [19:04:39.001-T1 INFO] Deployment completed for AMS-ST1-State - SUCCESS
+[2026-03-31 19:04:39] [19:04:39.002-T2 INFO] Deployment completed for AMS-ST1-Public - SUCCESS
+[2026-03-31 19:04:39] [19:04:39.003-T3 INFO] Deployment completed for AMS-ST1-Agency - SUCCESS
+[2026-03-31 19:04:39] [19:04:39.004-T1 INFO] Starting deployment of AMS-ST1-Api (Api)
+[2026-03-31 19:04:39] [19:04:39.005-T2 INFO] Starting deployment of AMS-ST1-Applicant (Applicant)
+[2026-03-31 19:04:39] [19:04:39.006-T3 INFO] Starting deployment of AMS-ST1-Host (Host)
+[2026-03-31 19:04:40] [19:04:40.112-T1 INFO] Copying package files to C:\WebApps\AMS-ST1-Api
+[2026-03-31 19:04:40] [19:04:40.113-T2 INFO] Copying package files to C:\WebApps\AMS-ST1-Applicant
+[2026-03-31 19:04:40] [19:04:40.114-T3 INFO] Copying package files to C:\WebApps\AMS-ST1-Host
+[2026-03-31 19:04:52] [19:04:52.221-T1 INFO] Package copy completed for AMS-ST1-Api
+[2026-03-31 19:04:52] [19:04:52.222-T1 INFO] Applying 3 configuration rules
+[2026-03-31 19:04:53] [19:04:53.331-T2 INFO] Package copy completed for AMS-ST1-Applicant
+[2026-03-31 19:04:53] [19:04:53.332-T2 INFO] Applying 2 configuration rules
+[2026-03-31 19:04:54] [19:04:54.441-T3 INFO] Package copy completed for AMS-ST1-Host
+[2026-03-31 19:04:54] [19:04:54.442-T3 INFO] Applying 3 configuration rules
+[2026-03-31 19:04:55] [19:04:55.001-T1 INFO] Deployment completed for AMS-ST1-Api - SUCCESS
+[2026-03-31 19:04:55] [19:04:55.002-T2 INFO] Deployment completed for AMS-ST1-Applicant - SUCCESS
+[2026-03-31 19:04:55] [19:04:55.003-T3 INFO] Deployment completed for AMS-ST1-Host - SUCCESS
+[2026-03-31 19:04:55] [19:04:55.004-T1 INFO] Starting deployment of TaskService (TaskService)
+[2026-03-31 19:05:02] [19:05:02.112-T1 INFO] Deployment completed for TaskService - SUCCESS
+[2026-03-31 19:05:02] [T1 INFO] Thread T1 completed - no more work in queue
+[2026-03-31 19:05:02] [T2 INFO] Thread T2 completed - no more work in queue
+[2026-03-31 19:05:02] [T3 INFO] Thread T3 completed - no more work in queue
+
+[2026-03-31 19:05:02] === DEPLOYMENT SUMMARY ===
+[2026-03-31 19:05:02] Total Items: 7
+[2026-03-31 19:05:02] Successful: 7
+[2026-03-31 19:05:02] Failed: 0
+[2026-03-31 19:05:02] SUCCESSFUL DEPLOYMENTS:
+[2026-03-31 19:05:02]   - AMS-ST1-State (State)
+[2026-03-31 19:05:02]   - AMS-ST1-Public (Public)
+[2026-03-31 19:05:02]   - AMS-ST1-Agency (Agency)
+[2026-03-31 19:05:02]   - AMS-ST1-Api (Api)
+[2026-03-31 19:05:02]   - AMS-ST1-Applicant (Applicant)
+[2026-03-31 19:05:02]   - AMS-ST1-Host (Host)
+[2026-03-31 19:05:02]   - TaskService (TaskService)
+
+[2026-03-31 19:05:03] === RESTORING PRESERVED FILES ===
+[2026-03-31 19:05:03] [INFO] Restoring preserved files from existing code backups
+[2026-03-31 19:05:03] [RESTORED] web.config.transform
+[2026-03-31 19:05:03] [RESTORED] App_Data\GeoData.xml
+[2026-03-31 19:05:04] [RESTORE SUMMARY] 2 files restored, 0 failures
+[2026-03-31 19:05:04] === RESTORE COMPLETE ===
+
+[2026-03-31 19:05:05] === POST-DEPLOYMENT CLEANUP ===
+[2026-03-31 19:05:05] [INFO] Processing cleanup rules for ST1...
+[2026-03-31 19:05:05] [DELETED] File: staging.config
+[2026-03-31 19:05:05] [DELETED] File: dev.config
+[2026-03-31 19:05:06] [SUMMARY] AMS-ST1-State: 2 files, 0 folders deleted
+[2026-03-31 19:05:06] === CLEANUP COMPLETE ===
+
+[2026-03-31 19:05:07] === Database Script Deployment ===
+[2026-03-31 19:05:07] About to deploy database scripts. Last deployment was 02282026. Running scripts to 03312026.
+[2026-03-31 19:05:10] Found 1 release(s) to process
+[2026-03-31 19:05:10] Processing release: 03312026
+[2026-03-31 19:05:10]   Running scripts from: C:\Projects\ST1-Deployment\ST1_03312026\DatabaseSchema
+[2026-03-31 19:05:11] Just Completed Running C:\Projects\ST1-Deployment\ST1_03312026\DatabaseSchema\Release_Scripts.1.AmsRegistry\Script_1_AddRegistryColumns.sql
+[2026-03-31 19:05:12] Just Completed Running C:\Projects\ST1-Deployment\ST1_03312026\DatabaseSchema\Release_Scripts.2.Ams\Script_1_CreateAuditTable.sql
+[2026-03-31 19:05:13] Just Completed Running C:\Projects\ST1-Deployment\ST1_03312026\DatabaseSchema\Release_Scripts.2.Ams\Script_2_UpdateStatusCodes.sql
+[2026-03-31 19:05:16] [ERROR] Failed to process release 03312026: SqlException: Invalid object name 'dbo.ApplicationStatus_New'.
+[2026-03-31 19:05:16] Script_3_MigrateStatusData.sql - Line 47: INSERT INTO dbo.ApplicationStatus_New SELECT * FROM dbo.ApplicationStatus WHERE StateCode = 'ST1'
+[2026-03-31 19:05:16] [ERROR] Database script deployment halted at Script_3_MigrateStatusData.sql
+[2026-03-31 19:05:16] [ERROR] Rolling back transaction for release 03312026
+[2026-03-31 19:05:17] [SUCCESS] Transaction rolled back successfully
+
+[2026-03-31 19:05:17] === Database Script Deployment Complete ===
+[2026-03-31 19:05:17]   Successfully processed: 0 release(s)
+[2026-03-31 19:05:17]   Skipped (path not found): 0 release(s)
+[2026-03-31 19:05:17] [WARNING] Code deployment succeeded but database scripts failed
+[2026-03-31 19:05:17] [WARNING] Application code and database schema are now out of sync
+[2026-03-31 19:05:17] [WARNING] Do not bring websites online until database issue is resolved
+[2026-03-31 19:05:17] DEPLOYMENT HALTED - database script failure requires manual intervention
