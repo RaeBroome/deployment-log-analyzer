@@ -1,0 +1,96 @@
+[2026-02-28 18:02:11] Starting deployment to 02282026 for Ohio (OH)...
+[2026-02-28 18:02:11] Is this correct? Press <Ctrl+C> if not
+[2026-02-28 18:02:14] === INITIALIZING AZURE ENVIRONMENT ===
+[2026-02-28 18:02:14] [INFO] Connecting to Azure US Government...
+[2026-02-28 18:02:19] [SUCCESS] Connected to Azure US Government
+[2026-02-28 18:02:19] [SUCCESS] Az.RecoveryServices module is already installed
+[2026-02-28 18:02:20] [SUCCESS] Az.RecoveryServices module loaded
+[2026-02-28 18:02:20] === AZURE ENVIRONMENT READY ===
+
+[2026-02-28 18:02:21] Disabling BCS-OH-UAT-UptimeAlert...
+[2026-02-28 18:02:23] [INFO] Uptime alert disabled
+[2026-02-28 18:02:24] Disabling BCS-OH-UAT-TasksAlert...
+[2026-02-28 18:02:26] [INFO] Uptime alert disabled
+
+[2026-02-28 18:02:27] Stopping BcsTasksService...
+[2026-02-28 18:02:27] [INFO] Attempting to stop service: BcsTasksService
+[2026-02-28 18:02:42] [WARNING] Service BcsTasksService did not stop within timeout period
+[2026-02-28 18:02:42] [INFO] Attempting to find and kill process by PID...
+[2026-02-28 18:02:43] [INFO] Found process PID: 7842
+[2026-02-28 18:02:43] [SUCCESS] Process 7842 killed successfully
+[2026-02-28 18:02:44] [SUCCESS] BcsTasksService stopped
+
+[2026-02-28 18:02:45] Stopping Default Web Site...
+[2026-02-28 18:02:46] [SUCCESS] Default Web Site stopped
+
+[2026-02-28 18:02:47] === TAKING WEBSITES OFFLINE ===
+[2026-02-28 18:02:47] [INFO] Using app_offline.htm from: C:\Deployments\app_offline.htm
+[2026-02-28 18:02:47] [INFO] Taking 6 websites offline...
+[2026-02-28 18:02:47] [SUCCESS] Taken offline: BCS-OH-State (State)
+[2026-02-28 18:02:47] [SUCCESS] Taken offline: BCS-OH-Public (Public)
+[2026-02-28 18:02:48] [SUCCESS] Taken offline: BCS-OH-Agency (Agency)
+[2026-02-28 18:02:48] [SUCCESS] Taken offline: BCS-OH-Api (Api)
+[2026-02-28 18:02:48] [SUCCESS] Taken offline: BCS-OH-Applicant (Applicant)
+[2026-02-28 18:02:48] [SUCCESS] Taken offline: BCS-OH-Host (Host)
+[2026-02-28 18:02:48] [SUMMARY] 6 websites taken offline, 0 failures
+[2026-02-28 18:02:48] === OFFLINE OPERATION COMPLETE ===
+
+[2026-02-28 18:02:49] About to backup databases and code in parallel...
+[2026-02-28 18:02:49] Starting BCS Database Backups
+[2026-02-28 18:02:49] Setting Azure context...
+[2026-02-28 18:02:51] Connecting to vault: BCS-OH-UAT-Vault
+[2026-02-28 18:02:53] Getting backup items...
+[2026-02-28 18:02:55] Filtering for BCS databases...
+[2026-02-28 18:02:55] Found 3 BCS databases
+[2026-02-28 18:02:55] Starting backup for: BCS_OH_UAT
+[2026-02-28 18:02:57] Backup started for BCS_OH_UAT (Job ID: a1b2c3d4-1111-2222-3333-aabbccdd0001)
+[2026-02-28 18:02:57] Starting backup for: BCS_OH_Registry_UAT
+[2026-02-28 18:02:58] Backup started for BCS_OH_Registry_UAT (Job ID: a1b2c3d4-1111-2222-3333-aabbccdd0002)
+[2026-02-28 18:02:58] Starting backup for: BCS_OH_Logging_UAT
+[2026-02-28 18:02:59] Backup started for BCS_OH_Logging_UAT (Job ID: a1b2c3d4-1111-2222-3333-aabbccdd0003)
+[2026-02-28 18:02:59] All database backup jobs started. Returning 3 job IDs.
+[2026-02-28 18:02:59] [INFO] Starting code backup...
+[2026-02-28 18:03:01] [INFO] Backing up BCS-OH-State to C:\Backups\OH\BCS-OH-State_Pre20260228
+[2026-02-28 18:03:08] [INFO] Backing up BCS-OH-Public to C:\Backups\OH\BCS-OH-Public_Pre20260228
+[2026-02-28 18:03:14] [INFO] Backing up BCS-OH-Agency to C:\Backups\OH\BCS-OH-Agency_Pre20260228
+[2026-02-28 18:03:19] [INFO] Backing up BCS-OH-Api to C:\Backups\OH\BCS-OH-Api_Pre20260228
+[2026-02-28 18:03:24] [INFO] Backing up BCS-OH-Host to C:\Backups\OH\BCS-OH-Host_Pre20260228
+[2026-02-28 18:03:31] [SUCCESS] Code backup completed in 0.5 minutes
+[2026-02-28 18:03:31] [INFO] Waiting for database backup job to complete...
+[2026-02-28 18:04:02] Backup status: 1 completed, 2 running, 0 failed (Total: 3)
+[2026-02-28 18:04:32] Backup status: 3 completed, 0 running, 0 failed (Total: 3)
+[2026-02-28 18:04:32] [SUCCESS] Database backup job completed successfully
+[2026-02-28 18:04:32] [SUCCESS] All database backup jobs completed successfully
+
+[2026-02-28 18:04:33] Starting SSRS upload in background...
+[2026-02-28 18:04:33] SSRS upload started. Deployment continuing...
+
+[2026-02-28 18:04:34] === STARTING PARALLEL DEPLOYMENT ===
+[2026-02-28 18:04:34] [INFO] Started 3 deployment threads for 7 items
+[2026-02-28 18:04:34] [18:04:34.112-T1 INFO] Starting deployment of BCS-OH-State (State)
+[2026-02-28 18:04:34] [18:04:34.114-T2 INFO] Starting deployment of BCS-OH-Public (Public)
+[2026-02-28 18:04:34] [18:04:34.115-T3 INFO] Starting deployment of BCS-OH-Agency (Agency)
+[2026-02-28 18:04:35] [18:04:35.203-T1 INFO] Using package source: C:\Projects\OH-Deployment\OH_02282026\Appl
+[2026-02-28 18:04:35] [18:04:35.204-T2 INFO] Using package source: C:\Projects\OH-Deployment\OH_02282026\Public
+[2026-02-28 18:04:35] [18:04:35.206-T3 ERROR] Package source not found: C:\Projects\OH-Deployment\OH_02282026\Appl-Agency
+[2026-02-28 18:04:35] [18:04:35.207-T3 ERROR] Deployment failed for BCS-OH-Agency: Package source not found: C:\Projects\OH-Deployment\OH_02282026\Appl-Agency
+[2026-02-28 18:04:36] [18:04:36.301-T1 INFO] Copying package files to C:\WebApps\BCS-OH-State
+[2026-02-28 18:04:36] [18:04:36.302-T2 INFO] Copying package files to C:\WebApps\BCS-OH-Public
+[2026-02-28 18:04:51] [18:04:51.881-T1 INFO] Package copy completed for BCS-OH-State
+[2026-02-28 18:04:51] [18:04:51.882-T1 INFO] Applying 5 configuration rules
+[2026-02-28 18:04:53] [18:04:53.002-T2 INFO] Package copy completed for BCS-OH-Public
+[2026-02-28 18:04:53] [18:04:53.003-T2 INFO] Applying 2 configuration rules
+[2026-02-28 18:04:55] [18:04:55.201-T1 INFO] Deployment completed for BCS-OH-State - SUCCESS
+[2026-02-28 18:04:55] [18:04:55.202-T2 INFO] Deployment completed for BCS-OH-Public - SUCCESS
+
+[2026-02-28 18:04:55] === DEPLOYMENT SUMMARY ===
+[2026-02-28 18:04:55] Total Items: 7
+[2026-02-28 18:04:55] Successful: 2
+[2026-02-28 18:04:55] Failed: 1
+[2026-02-28 18:04:55] FAILED DEPLOYMENTS:
+[2026-02-28 18:04:55]   - BCS-OH-Agency (Agency)
+[2026-02-28 18:04:55]     Error: Package source not found: C:\Projects\OH-Deployment\OH_02282026\Appl-Agency
+[2026-02-28 18:04:55] [WARNING] Deployment completed with failures - database scripts will not run
+[2026-02-28 18:04:55] [WARNING] Resolve deployment failures before proceeding
+[2026-02-28 18:04:55] [INFO] Websites remain offline pending manual review
+[2026-02-28 18:04:55] DEPLOYMENT HALTED - manual intervention required
