@@ -145,7 +145,7 @@ def main():
 
     # Parse JSON response
     try:
-            # Strip markdown code blocks if Claude wrapped the response
+        # Strip markdown code blocks if Claude wrapped the response
         cleaned = raw_analysis.strip()
         if cleaned.startswith("```"):
             cleaned = cleaned.split("\n", 1)[1]  # Remove first line (```json)

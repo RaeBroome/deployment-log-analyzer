@@ -1,21 +1,21 @@
 {
   "deployment_status": "FAILED",
-  "summary": "Deployment failed due to missing package source for BCS-OH-Agency component, only 2 of 7 items deployed successfully before halting.",
+  "summary": "Deployment failed due to missing package source for AMS-ST1-Agency component, only 2 of 7 items deployed successfully before halting.",
   "failures": [
     {
       "timestamp": "2026-02-28 18:04:35",
-      "component": "BCS-OH-Agency",
-      "error": "Package source not found: C:\\Projects\\OH-Deployment\\OH_02282026\\Appl-Agency",
+      "component": "AMS-ST1-Agency",
+      "error": "Package source not found: C:\\Projects\\ST1-Deployment\\ST1_02282026\\Appl-Agency",
       "root_cause": "The deployment package for the Agency component is missing from the expected directory, likely due to incorrect package naming (Appl-Agency vs expected naming convention) or incomplete package preparation",
-      "recommended_action": "Verify the Agency package exists in C:\\Projects\\OH-Deployment\\OH_02282026\\ directory with correct naming convention matching other packages (should likely be 'Agency' not 'Appl-Agency'), ensure all 7 deployment packages were properly built and copied to deployment directory before retrying"
+      "recommended_action": "Verify the Agency package exists in C:\\Projects\\ST1-Deployment\\ST1_02282026\\ directory with correct naming convention matching other packages (should likely be 'Agency' not 'Appl-Agency'), ensure all 7 deployment packages were properly built and copied to deployment directory before retrying"
     }
   ],
   "warnings": [
     {
       "timestamp": "2026-02-28 18:02:42",
-      "component": "BcsTasksService",
-      "message": "Service BcsTasksService did not stop within timeout period",
-      "recommendation": "Monitor BcsTasksService for graceful shutdown issues; process had to be forcibly killed (PID 7842) which may indicate hanging operations or insufficient timeout configuration"
+      "component": "AmsTasksService",
+      "message": "Service AmsTasksService did not stop within timeout period",
+      "recommendation": "Monitor AmsTasksService for graceful shutdown issues; process had to be forcibly killed (PID 7842) which may indicate hanging operations or insufficient timeout configuration"
     },
     {
       "timestamp": "2026-02-28 18:04:55",
@@ -33,16 +33,16 @@
   "successes": [
     "Azure US Government connection established",
     "Az.RecoveryServices module loaded",
-    "Uptime alerts disabled for BCS-OH-UAT-UptimeAlert and BCS-OH-UAT-TasksAlert",
-    "BcsTasksService stopped (forcibly via PID 7842)",
+    "Uptime alerts disabled for AMS-ST1-STAGING-UptimeAlert and AMS-ST1-STAGING-TasksAlert",
+    "AmsTasksService stopped (forcibly via PID 7842)",
     "Default Web Site stopped",
     "6 websites taken offline successfully",
     "Code backup completed for 5 sites in 0.5 minutes",
-    "3 database backups completed (BCS_OH_UAT, BCS_OH_Registry_UAT, BCS_OH_Logging_UAT)",
+    "3 database backups completed (AMS_ST1_STAGING, AMS_ST1_Registry_STAGING, AMS_ST1_Logging_STAGING)",
     "SSRS upload started in background",
-    "BCS-OH-State deployed successfully",
-    "BCS-OH-Public deployed successfully"
+    "AMS-ST1-State deployed successfully",
+    "AMS-ST1-Public deployed successfully"
   ],
   "safe_to_retry": true,
-  "retry_instructions": "1. Verify all 7 deployment packages exist in C:\\Projects\\OH-Deployment\\OH_02282026\\ with correct naming (check Agency package specifically - may be named 'Appl-Agency' instead of expected name). 2. Confirm package integrity and completeness for remaining 5 undeployed items (Agency, Api, Applicant, Host, and 2 others). 3. Websites are already offline and services stopped, backups completed - safe to re-run deployment script from deployment phase. 4. Do not re-disable alerts or re-backup unless required by deployment script logic. 5. After successful deployment, manually verify database scripts execution and bring websites online by removing app_offline.htm files."
+  "retry_instructions": "1. Verify all 7 deployment packages exist in C:\\Projects\\ST1-Deployment\\ST1_02282026\\ with correct naming (check Agency package specifically - may be named 'Appl-Agency' instead of expected name). 2. Confirm package integrity and completeness for remaining 5 undeployed items (Agency, Api, Applicant, Host, and 2 others). 3. Websites are already offline and services stopped, backups completed - safe to re-run deployment script from deployment phase. 4. Do not re-disable alerts or re-backup unless required by deployment script logic. 5. After successful deployment, manually verify database scripts execution and bring websites online by removing app_offline.htm files."
 }

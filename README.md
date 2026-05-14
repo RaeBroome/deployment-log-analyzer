@@ -65,18 +65,18 @@ python analyzer.py path/to/your/deployment.log
 ```
 ============================================================
 STATUS: FAILED — 1 failure(s), 3 warning(s)
-Deployment failed due to missing package source for BCS-OH-Agency 
+Deployment failed due to missing package source for AMS-ST1-Agency 
 component, only 2 of 7 items deployed successfully before halting.
 ============================================================
 
 FAILURES:
-  [2026-02-28 18:04:35] BCS-OH-Agency
-  Error: Package source not found: C:\Projects\OH-Deployment\OH_02282026\Appl-Agency
+  [2026-02-28 18:04:35] AMS-ST1-Agency
+  Error: Package source not found: C:\Projects\ST1-Deployment\ST1_02282026\Appl-Agency
   Root Cause: Deployment package missing or incorrectly named in package directory
   Fix: Verify Agency package exists with correct naming convention before retrying
 
 WARNINGS:
-  [2026-02-28 18:02:42] BcsTasksService
+  [2026-02-28 18:02:42] AmsTasksService
   Service did not stop within timeout — process forcibly killed (PID 7842)
 
 SAFE TO RETRY: YES
