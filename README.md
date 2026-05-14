@@ -6,7 +6,11 @@ An AI-powered deployment log analyzer that uses the Anthropic Claude API to iden
 
 ## Why This Exists
 
-Deployment logs can span thousands of lines across parallel threads, multiple components, and simultaneous operations. Finding the root cause of a failure manually takes time an engineering team doesn't have during a live deployment window. This tool feeds the log to Claude and returns a structured analysis in seconds.
+Deployment logs can span thousands of lines across parallel threads, multiple components, and simultaneous operations. When threads execute concurrently, their log entries interleave by timestamp — a critical failure from Thread 3 can be buried between progress messages from Threads 1 and 2, easy to miss under pressure during a live deployment window.
+
+Finding the root cause manually means mentally reconstructing the execution sequence across interleaved thread output while the clock is ticking and websites are offline.
+
+This tool feeds the log to Claude and returns a structured analysis in seconds — pulling failures out regardless of where they appear in the thread sequence, reconstructing what happened and in what order, and telling you exactly what to fix before retrying.
 
 ## What It Does
 
