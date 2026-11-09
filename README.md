@@ -97,11 +97,3 @@ A realistic sample deployment log is included at `samples/sample_deployment.log`
 Built to demonstrate AI-assisted DevOps workflows — specifically the pattern of taking real engineering problems that currently require manual analysis and wrapping them in an AI layer that accelerates diagnosis and decision-making.
 
 The sample log reflects real deployment patterns from enterprise government environments including parallel threading, Azure Recovery Services integration, and safe deployment sequencing — halting before database scripts on a failed code deployment because code rollback is a file copy while database rollback is a restore.
-
-## Planned Improvements
-
-- Support for multiple log formats (Azure DevOps, Jenkins, GitHub Actions)
-- HTML report output for sharing with stakeholders
-- Slack or Teams notification integration
-- Batch analysis of multiple logs
-- Trend analysis across deployment history
