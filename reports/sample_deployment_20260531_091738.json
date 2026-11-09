@@ -1,0 +1,47 @@
+{
+  "deployment_status": "FAILED",
+  "summary": "Deployment failed due to missing package source for AMS-ST1-Agency component, with 2 of 7 components successfully deployed before halting.",
+  "failures": [
+    {
+      "timestamp": "2026-02-28 18:04:35",
+      "component": "AMS-ST1-Agency (Agency)",
+      "error": "Package source not found: C:\\Projects\\ST1-Deployment\\ST1_02282026\\Appl-Agency",
+      "root_cause": "The deployment package directory for the Agency component is missing or incorrectly named (appears to have 'Appl-Agency' instead of expected naming convention)",
+      "recommended_action": "Verify the deployment package structure in C:\\Projects\\ST1-Deployment\\ST1_02282026\\ and ensure the Agency package directory exists with correct naming; likely needs to be renamed from 'Appl-Agency' to match expected pattern or the source path mapping needs correction"
+    }
+  ],
+  "warnings": [
+    {
+      "timestamp": "2026-02-28 18:02:42",
+      "component": "AmsTasksService",
+      "message": "Service AmsTasksService did not stop within timeout period",
+      "recommendation": "Investigate why AmsTasksService requires forced termination; this may indicate hung processes or insufficient timeout configuration"
+    },
+    {
+      "timestamp": "2026-02-28 18:04:55",
+      "component": "Deployment Pipeline",
+      "message": "Deployment completed with failures - database scripts will not run",
+      "recommendation": "Database migration scripts were skipped due to deployment failures; these will need to be run manually or via retry after fixing package issues"
+    },
+    {
+      "timestamp": "2026-02-28 18:04:55",
+      "component": "Website Management",
+      "message": "Websites remain offline pending manual review",
+      "recommendation": "All 6 websites are currently offline with app_offline.htm; bring them back online after resolving deployment issues or rollback if necessary"
+    }
+  ],
+  "successes": [
+    "Successfully connected to Azure US Government environment",
+    "Az.RecoveryServices module loaded successfully",
+    "Disabled uptime and task alerts for AMS-ST1-STAGING",
+    "Stopped AmsTasksService and Default Web Site",
+    "Took 6 websites offline (State, Public, Agency, Api, Applicant, Host)",
+    "Completed code backup for 5 components in 0.5 minutes",
+    "Successfully backed up 3 databases (AMS_ST1_STAGING, AMS_ST1_Registry_STAGING, AMS_ST1_Logging_STAGING)",
+    "Started SSRS upload in background",
+    "Successfully deployed AMS-ST1-State component",
+    "Successfully deployed AMS-ST1-Public component"
+  ],
+  "safe_to_retry": true,
+  "retry_instructions": "1) Verify and fix the Agency package source path at C:\\Projects\\ST1-Deployment\\ST1_02282026\\ (check for 'Appl-Agency' directory and rename/restructure as needed). 2) Ensure all 7 component packages are present and correctly named. 3) Verify no partial files were deployed to failed components. 4) Re-run deployment script - backups are already in place and websites are already offline, so deployment can proceed from package deployment phase. 5) Monitor that all 7 components deploy successfully before database scripts execute."
+}

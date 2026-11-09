@@ -1,0 +1,36 @@
+{
+  "deployment_status": "FAILED",
+  "summary": "Code deployment succeeded for all 7 components, but database script deployment failed due to missing table 'dbo.ApplicationStatus_New', leaving application code and database schema out of sync.",
+  "failures": [
+    {
+      "timestamp": "2026-03-31 19:05:16",
+      "component": "Database Script Deployment - Release 03312026",
+      "error": "SqlException: Invalid object name 'dbo.ApplicationStatus_New'. Script_3_MigrateStatusData.sql - Line 47: INSERT INTO dbo.ApplicationStatus_New SELECT * FROM dbo.ApplicationStatus WHERE StateCode = 'ST1'",
+      "root_cause": "Script_3_MigrateStatusData.sql attempts to insert data into table 'dbo.ApplicationStatus_New' which does not exist; the table should have been created by a previous script (likely Script_2_UpdateStatusCodes.sql) but was not, indicating either missing DDL statements or incorrect script execution order.",
+      "recommended_action": "1. Review Script_2_UpdateStatusCodes.sql to verify it contains CREATE TABLE statement for ApplicationStatus_New. 2. If missing, add the CREATE TABLE statement before the data migration. 3. If present, verify the script executed successfully by checking database logs. 4. Once corrected, re-run only the database scripts (transaction was already rolled back). 5. Do NOT bring websites online until database schema matches deployed code version 03312026."
+    }
+  ],
+  "warnings": [
+    {
+      "timestamp": "2026-03-31 19:05:17",
+      "component": "Deployment Orchestrator",
+      "message": "Code deployment succeeded but database scripts failed - Application code and database schema are now out of sync",
+      "recommendation": "Do not bring websites online until database issue is resolved. The application is currently in an inconsistent state with version 03312026 code deployed but database still at version 02282026."
+    }
+  ],
+  "successes": [
+    "Azure US Government connection established",
+    "Uptime alerts disabled for AMS-ST1-STAGING-UptimeAlert and AMS-ST1-STAGING-TasksAlert",
+    "AmsTasksService and Default Web Site stopped successfully",
+    "All 6 websites taken offline (State, Public, Agency, Api, Applicant, Host)",
+    "Database backups completed for 3 databases (AMS_ST1_STAGING, AMS_ST1_Registry_STAGING, AMS_ST1_Logging_STAGING)",
+    "Code backups completed for all 5 web applications in 0.5 minutes",
+    "SSRS upload started in background",
+    "All 7 components deployed successfully (State, Public, Agency, Api, Applicant, Host, TaskService)",
+    "Preserved files restored (web.config.transform, App_Data/GeoData.xml)",
+    "Post-deployment cleanup completed (2 files deleted)",
+    "Database script rollback executed successfully preventing partial schema changes"
+  ],
+  "safe_to_retry": true,
+  "retry_instructions": "1. Keep all websites offline (do NOT remove app_offline.htm). 2. Investigate and fix Script_2_UpdateStatusCodes.sql or Script_3_MigrateStatusData.sql to ensure ApplicationStatus_New table is created before data migration. 3. Verify the corrected scripts in a test environment. 4. Re-run ONLY the database script deployment portion (code is already deployed). 5. Verify database schema version matches 03312026 before bringing sites online. 6. Once database scripts succeed, remove app_offline.htm files, restart services, and re-enable uptime alerts."
+}
